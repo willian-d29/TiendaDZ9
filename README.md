@@ -1,68 +1,104 @@
-# CodeIgniter 4 Application Starter
+# Sistema de Tienda D29
 
-## What is CodeIgniter?
+Este es un proyecto de sistema de tienda en línea desarrollado con CodeIgniter 4. El sistema incluye funcionalidades tanto para administradores como para usuarios registrados, permitiendo la gestión de productos, clientes, ventas y más.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Características
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- **Administración de Productos**: Crear, editar, eliminar y listar productos.
+- **Gestión de Clientes**: Crear, editar, eliminar y listar clientes.
+- **Gestión de Ventas**: Crear, editar, eliminar y listar ventas.
+- **Reportes**: Generar y exportar reportes en formatos PDF, XLS y HTML.
+- **Interfaz de Usuario**: Ver productos, agregar al carrito, proceder al pago, y ver historial de pedidos.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Prerrequisitos
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- PHP 7.3 o superior
+- Composer
+- MySQL
+- Git
 
-## Installation & updates
+## Instalación
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+1. **Clonar el repositorio**:
+    ```sh
+    git clone https://github.com/tu-usuario/tu-repositorio.git
+    ```
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+2. **Navegar al directorio del proyecto**:
+    ```sh
+    cd tu-repositorio
+    ```
 
-## Setup
+3. **Instalar dependencias con Composer**:
+    ```sh
+    composer install
+    ```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+4. **Configurar el archivo `.env`**:
+    - Copiar el archivo `.env.example` a `.env`:
+        ```sh
+        cp .env.example .env
+        ```
+    - Editar el archivo `.env` con la configuración de tu base de datos.
 
-## Important Change with index.php
+5. **Importar la base de datos**:
+    - Abre tu herramienta de administración de base de datos (por ejemplo, phpMyAdmin).
+    - Crea una nueva base de datos con el nombre `tienda02`.
+    - Importa el archivo `tienda02.sql` que se encuentra en el directorio del proyecto:
+        ```sh
+        mysql -u tu_usuario -p tienda02 < database/tienda02.sql
+        ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+6. **Ejecutar migraciones y seeders para crear las tablas en la base de datos**:
+    ```sh
+    php spark migrate
+    php spark db:seed DatabaseSeeder
+    ```
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+7. **Iniciar el servidor**:
+    ```sh
+    php spark serve
+    ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+8. **Acceder a la aplicación en** `http://localhost:8080`.
 
-## Repository Management
+## Estructura del Proyecto
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- **app/Controllers**: Controladores de la aplicación.
+- **app/Models**: Modelos de la aplicación.
+- **app/Views**: Vistas de la aplicación.
+- **public/**: Carpeta pública, contiene index.php.
+- **writable/**: Carpeta para archivos de caché, logs, y sesiones.
+- **database/tienda02.sql**: Archivo SQL para configurar la base de datos.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Uso
 
-## Server Requirements
+### Administrador
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+1. **Iniciar sesión como administrador**.
+2. **Gestionar productos**: Crear, editar y eliminar productos.
+3. **Gestionar clientes**: Crear, editar y eliminar clientes.
+4. **Gestionar ventas**: Crear, editar y eliminar ventas.
+5. **Generar reportes**: Exportar reportes en PDF, XLS y HTML.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### Usuario Registrado
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+1. **Ver productos disponibles**.
+2. **Agregar productos al carrito**.
+3. **Proceder al pago**.
+4. **Ver historial de pedidos**.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## Contribuir
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Las contribuciones son bienvenidas. Puedes hacer un fork del repositorio, crear una rama, hacer tus cambios y enviar un pull request.
+
+1. **Hacer fork del proyecto**.
+2. **Crear una nueva rama** (`git checkout -b feature/nueva-funcionalidad`).
+3. **Hacer commit de los cambios** (`git commit -m 'Agregar nueva funcionalidad'`).
+4. **Hacer push a la rama** (`git push origin feature/nueva-funcionalidad`).
+5. **Abrir un pull request**.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
