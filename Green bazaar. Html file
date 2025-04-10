@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Bazaar - Eco-Friendly Shopping</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f9f2;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    nav {
+      background-color: #81c784;
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #2e7d32;
+    }
+    .section {
+      padding: 2rem;
+    }
+    .features, .rewards, .impact {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #2e7d32;
+      color: white;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      nav a {
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Green Bazaar</div>
+    <div class="tagline">Your One-Stop Eco-Friendly Marketplace</div>
+  </header>  <nav>
+    <a href="#offerings">Offerings</a>
+    <a href="#rewards">Rewards</a>
+    <a href="#impact">Impact</a>
+  </nav>  <section class="section" id="offerings">
+    <div class="features">
+      <h2>Our Offerings</h2>
+      <ul>
+        <li>Reusable home and kitchen products</li>
+        <li>Organic beauty and skincare items</li>
+        <li>Bamboo-based alternatives</li>
+        <li>Eco-friendly fashion accessories</li>
+        <li>Street vendor collaborations for local eco-goods</li>
+      </ul>
+    </div>
+  </section>  <section class="section" id="rewards">
+    <div class="rewards">
+      <h2>Green Rewards System</h2>
+      <p>Earn Green Points with every purchase, referral, and review. Redeem your points for discounts, exclusive products, and more!</p>
+      <ul>
+        <li>1 Point = ₹1 Discount</li>
+        <li>Get 50 Points on Signup</li>
+        <li>Referral Bonus: 30 Points per friend</li>
+      </ul>
+    </div>
+  </section>  <section class="section" id="impact">
+    <div class="impact">
+      <h2>Track Your Eco Impact</h2>
+      <p>See how your choices help the planet. Every visit, share, and eco-purchase is a step toward a greener future.</p>
+      <ul>
+        <li>Plastic saved: <strong id="plastic">2.5</strong> kg</li>
+        <li>Carbon offset: <strong id="carbon">15</strong> kg CO2</li>
+        <li>Local vendor support: <strong id="vendor">₹250</strong></li>
+      </ul>
+      <p><em>Figures update in real time as you continue to shop sustainably!</em></p>
+    </div>
+  </section>  <footer>
+    &copy; 2025 Green Bazaar | Live Green, Shop Green
+  </footer>  <script>
+    // Animate sections on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.features, .rewards, .impact').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Mock real-time impact tracking
+    let plastic = 2.5;
+    let carbon = 15;
+    let vendor = 250;
+
+    setInterval(() => {
+      plastic += 0.01;
+      carbon += 0.05;
+      vendor += 1;
+      document.getElementById("plastic").textContent = plastic.toFixed(2);
+      document.getElementById("carbon").textContent = carbon.toFixed(2);
+      document.getElementById("vendor").textContent = "₹" + vendor;
+    }, 3000);
+  </script></body>
+</html>
